@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
-
-    <!-- You can also require other files to run in this process -->
-    <script src="./renderer.js"></script>
-  </body>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+        <title>SERCI Web Editor</title>
+    </head>
+    <body>
+        <div class="content-container">
+            <h1 class="title-text">How can I help you?</h1>
+            <div class="icon-flex-container">
+                <div class="individual-icon-container">
+                    <img class="icon" src="icons/1849483-data-and-network-management/svg/028-folder.svg"/>
+                    <p class="icon-text">upload files</p>
+                </div>
+                <div class="individual-icon-container">
+                    <img class="icon" src="icons/1849483-data-and-network-management/svg/016-data.svg"/>
+                    <p class="icon-text">edit existing files</p>
+                </div>
+                <div class="individual-icon-container">
+                    <img class="icon" src="icons/1849483-data-and-network-management/svg/035-network.svg"/>
+                    <p class="icon-text">confirm changes</p>
+                </div>
+            </div>
+        </div>
+        <p class="ack-text">Icons made by <a href="https://www.flaticon.com/authors/srip">srip</a> from www.flaticon.com</p>
+        <script src="./renderer.js"></script>
+    </body>
 </html>
