@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900&display=swap" rel="stylesheet">
+        <title>SERCI Web Editor</title>
+        
+        <style>
+        
+        </style>
+        
+    </head>
+    <body>
+        <div class="master-container">
+            <div class="container" id="container">
+                <div class="form-container sign-up-container">
+                    <form>
+                        <h1 class="form-subheading-text">Congress Article</h1>
+                        <input class="input-box" type="text" name="title" placeholder="Title">
+                        <input  class="input-box" type="text" name="authors" placeholder="Authors">
+                        <input class="input-file" type="file" name="file"><br><br>
+                        <input class="submit-button" type="submit" value="Upload">
+                    </form>
+                </div>
+                <div class="form-container sign-in-container">
+                    <form>
+                        <h1 class="form-subheading-text">RERCI Article</h1>
+                        <input class="input-box" type="text" name="title" placeholder="Title">
+                        <input class="input-box" type="text" name="journal" placeholder="Journal">
+                        <input  class="input-box" type="text" name="authors" placeholder="Authors">
+                        <textarea class="input-textarea" placeholder="Abstract"></textarea>
+                        <input class="input-file" type="file" name="file"><br><br>
+                        <input class="submit-button" type="submit" value="Upload">
+                    </form>
+                </div>
+                <div class="overlay-container">
+                    <div class="overlay">
+                        <div class="overlay-panel overlay-left">
+                            <h1 class="form-title-text">Add RERCI Article</h1>
+                            <button class="swap-forms-button" onclick="move_overlay_back()"><i class="fas fa-long-arrow-alt-right"></i></button>
+                        </div>
+
+                        <div class="overlay-panel overlay-right">
+                            <h1 class="form-title-text" >Add Congress Article</h1>
+                            <button class="swap-forms-button" onclick="move_overlay()"><i class="fas fa-long-arrow-alt-left"></i></button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function move_overlay() {
+                const container = document.getElementById('container'); 
+                container.classList.add('right-panel-active');
+            }
+            
+            function move_overlay_back() {
+                const container = document.getElementById('container'); 
+                container.classList.remove('right-panel-active');
+            }
+        
+        </script>
+            
+        <script src="https://kit.fontawesome.com/282d470972.js"></script>
+    </body>
+</html>
