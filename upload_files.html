@@ -15,22 +15,26 @@
         <div class="master-container">
             <div class="container" id="container">
                 <div class="form-container sign-up-container">
-                    <form>
+                    <form id="congress-article-form">
                         <h1 class="form-subheading-text">Congress Article</h1>
                         <input class="input-box" type="text" name="title" placeholder="Title">
-                        <input  class="input-box" type="text" name="authors" placeholder="Authors">
-                        <input class="input-file" type="file" name="file"><br><br>
+                        <input class="input-box" type="text" name="year" placeholder="Year">
+                        <input  class="input-box" type="text" name="authors" placeholder="Authors"><br><br>
+                        <input class="input-file" type="file" id="congress-file-button" name="file">
+                        <p class="body-text">or</p>
+                        <input  class="input-box" type="text" name="link" placeholder="Link to file"><br><br>
                         <input class="submit-button" type="submit" value="Upload">
                     </form>
                 </div>
                 <div class="form-container sign-in-container">
-                    <form>
+                    <form id="rerci-article-form">
                         <h1 class="form-subheading-text">RERCI Article</h1>
                         <input class="input-box" type="text" name="title" placeholder="Title">
+                        <input class="input-box" type="text" name="year" placeholder="Year">
                         <input class="input-box" type="text" name="journal" placeholder="Journal">
-                        <input  class="input-box" type="text" name="authors" placeholder="Authors">
-                        <textarea class="input-textarea" placeholder="Abstract"></textarea>
-                        <input class="input-file" type="file" name="file"><br><br>
+                        <input class="input-box" type="text" name="authors" placeholder="Authors">
+                        <textarea class="input-textarea" name="abstract" placeholder="Abstract"></textarea>
+                        <input class="input-file" type="file" id="rerci-file-button" name="file"><br>
                         <input class="submit-button" type="submit" value="Upload">
                     </form>
                 </div>
@@ -44,7 +48,6 @@
                         <div class="overlay-panel overlay-right">
                             <h1 class="form-title-text" >Add Congress Article</h1>
                             <button class="swap-forms-button" onclick="move_overlay()"><i class="fas fa-long-arrow-alt-left"></i></button>
-
                         </div>
                     </div>
                 </div>
@@ -60,8 +63,9 @@
                 const container = document.getElementById('container'); 
                 container.classList.remove('right-panel-active');
             }
-        
         </script>
+        
+        <script src="./upload_files.js"></script>
             
         <script src="https://kit.fontawesome.com/282d470972.js"></script>
     </body>
