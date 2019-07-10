@@ -67,7 +67,7 @@ function change_folder(str) {
 
 
 async function populate_page(str) {
-    /* Takes a directory to open. Queries the python script to get the contents of the directory, 
+    /* Takes a directory string to open. Queries the python script to get the contents of the directory, 
        and then prints those contents to the page. */
     
     let options = {
@@ -94,7 +94,7 @@ function print_folder_contents (python_output_list, directory_address) {
         let content_type = folder_contents_list[i].type.split(',')[0];
         
         if (content_type === 'file') {
-            inner_html += `<div class="file-line"><p class="body-text">${folder_contents_list[i].name}</p><button class="edit-button" onclick="alert('lol')">EDIT</button><button class="trash-button">DELETE</button></div>`;
+            inner_html += `<div class="file-line"><p class="body-text">${folder_contents_list[i].name}</p><button class="edit-button" onclick="alert('clicking me should have let you edit the file')">EDIT</button><button class="trash-button">DELETE</button></div>`;
             
         } else if (content_type === 'folder') {
             inner_html += `<div class="folder-line" onclick="change_folder('${folder_contents_list[i].name}')"><p class="body-text">${folder_contents_list[i].name}</p></div>`;
