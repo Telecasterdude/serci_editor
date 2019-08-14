@@ -57,10 +57,12 @@ function change_folder(str) {
             let folder_tree = current_folder.split("/");
             current_folder = folder_tree.slice(0, folder_tree.length - 1).join("/");
         }
-        
     } else {
         current_folder += "/" + str;
     }
+    
+    title_h1_tag = document.getElementById('folder-title');
+    title_h1_tag.textContent = "Loading..."; //give the user some feedback on what is going on
     populate_page(current_folder);
 }
 
@@ -75,7 +77,7 @@ async function populate_page(str) {
         args : [str]
     }
 
-    PythonShell.run('folder_browser.py', options, (error, output) => {print_folder_contents(output, str)});
+    PythonShell.run('folder_browser.py', options, (error, output) => {console.log(error);print_folder_contents(output, str)});
 }
 
 
@@ -91,10 +93,11 @@ function print_folder_contents (python_output_list, directory_address) {
     
     let inner_html = '';
     for (let i = 0; i < folder_contents_list.length; i ++) {
+        console.log(folder_contents_list[i])
         let content_type = folder_contents_list[i].type.split(',')[0];
         
         if (content_type === 'file') {
-            inner_html += `<div class="file-line"><p class="body-text">${folder_contents_list[i].name}</p><button class="edit-button" onclick="alert('clicking me should have let you edit the file')">EDIT</button><button class="trash-button">DELETE</button></div>`;
+            inner_html += `<div class="file-line"><p class="body-text">${folder_contents_list[i].name}</p><button class="edit-button" href="./edit_html_file.html">EDIT</button><button class="trash-button">DELETE</button></div>`;
             
         } else if (content_type === 'folder') {
             inner_html += `<div class="folder-line" onclick="change_folder('${folder_contents_list[i].name}')"><p class="body-text">${folder_contents_list[i].name}</p></div>`;
