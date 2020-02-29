@@ -1,6 +1,6 @@
 const {PythonShell} = require('python-shell');
 
-let current_folder = "./html";
+let current_folder = "";
     
     /*return `drwxrwxr-x    2 3232     2768         4096 Nov 10  2018 ..
 -rw-rw-r--    1 3232     2768        40496 May 04 07:22 RERCI-release-img.png
@@ -53,7 +53,7 @@ function change_folder(str) {
     //Addresses special case where the folder is the back folder
     if (str === "..") {
         //don't do anything if we are at asking to go back from the root folder
-        if (current_folder !== ".") {
+        if (current_folder !== "") {
             let folder_tree = current_folder.split("/");
             current_folder = folder_tree.slice(0, folder_tree.length - 1).join("/");
         }
@@ -93,11 +93,10 @@ function print_folder_contents (python_output_list, directory_address) {
     
     let inner_html = '';
     for (let i = 0; i < folder_contents_list.length; i ++) {
-        console.log(folder_contents_list[i])
         let content_type = folder_contents_list[i].type.split(',')[0];
         
         if (content_type === 'file') {
-            inner_html += `<div class="file-line"><p class="body-text">${folder_contents_list[i].name}</p><a class="edit-button" href="./edit_html_file.html">EDIT</a><button class="trash-button">DELETE</button></div>`;
+            inner_html += `<a class="link-button" href="./edit_html_file.html?filename=${current_folder + "/" + folder_contents_list[i].name}"><div class="file-line"><p class="body-text">${folder_contents_list[i].name}</p></div></a>`;
             
         } else if (content_type === 'folder') {
             inner_html += `<div class="folder-line" onclick="change_folder('${folder_contents_list[i].name}')"><p class="body-text">${folder_contents_list[i].name}</p></div>`;
@@ -105,7 +104,7 @@ function print_folder_contents (python_output_list, directory_address) {
     }
     
     let folder_name = directory_address.split('/').pop();
-    title_h1_tag.textContent = folder_name;
+    title_h1_tag.textContent = folder_name || "Home";
     container_div.innerHTML = inner_html;
 }
 

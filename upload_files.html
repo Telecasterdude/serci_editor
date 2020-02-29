@@ -12,48 +12,51 @@
         
     </head>
     <body>
-        <div class="master-container">
-            <div class="container" id="container">
-                <div class="form-container sign-up-container">
-                    <form id="congress-article-form">
-                        <h1 class="form-subheading-text">Congress Article</h1>
-                        <input class="input-box" type="text" name="title" placeholder="Title">
-                        <input class="input-box" type="text" name="year" placeholder="Year">
-                        <input  class="input-box" type="text" name="authors" placeholder="Authors"><br><br>
-                        <input class="input-file" type="file" id="congress-file-button" name="file">
-                        <p class="body-text">or</p>
-                        <input  class="input-box" type="text" name="link" placeholder="Link to file"><br><br>
-                        <input class="submit-button" type="submit" value="Upload"><br>
-                        <p class="body-text" id="response-congress"></p>
-                    </form>
-                </div>
-                <div class="form-container sign-in-container">
-                    <form id="rerci-article-form">
-                        <h1 class="form-subheading-text">RERCI Article</h1>
-                        <input class="input-box" type="text" name="title" placeholder="Title">
-                        <input class="input-box" type="text" name="year" placeholder="Year">
-                        <input class="input-box" type="text" name="journal" placeholder="Journal">
-                        <input class="input-box" type="text" name="authors" placeholder="Authors">
-                        <textarea class="input-textarea" name="abstract" placeholder="Abstract"></textarea>
-                        <input class="input-file" type="file" id="rerci-file-button" name="file"><br>
-                        <input class="submit-button" type="submit" value="Upload"><br>
-                        <p class="body-text" id="response-serci"></p>
-                    </form>
-                </div>
-                <div class="overlay-container">
-                    <div class="overlay">
-                        <div class="overlay-panel overlay-left">
-                            <h1 class="form-title-text">Add RERCI Article</h1>
-                            <button class="swap-forms-button" onclick="move_overlay_back()"><i class="fas fa-long-arrow-alt-right"></i></button>
-                        </div>
+        <div class="container" id="container">
+            <div class="form-container sign-up-container">
+                <form id="congress-article-form">
+                    <h1 class="form-subheading-text">Congress Article</h1>
+                    <input class="input-box" type="text" name="title" placeholder="Title">
+                    <input class="input-box" type="text" name="year" placeholder="Year">
+                    <input  class="input-box" type="text" name="authors" placeholder="Authors"><br><br>
+                    <input class="input-file" type="file" id="congress-file-button" name="file">
+                    <p class="body-text">or</p>
+                    <input  class="input-box" type="text" name="link" placeholder="Link to file"><br><br>
+                    <input class="submit-button" type="submit" value="Upload"><br>
+                    <p class="body-text" id="response-congress"></p>
+                </form>
+            </div>
+            <div class="form-container sign-in-container">
+                <form id="rerci-article-form">
+                    <h1 class="form-subheading-text">RERCI Article</h1>
+                    <input class="input-box" type="text" name="title" placeholder="Title">
+                    <input class="input-box" type="text" name="year" placeholder="Year">
+                    <input class="input-box" type="text" name="journal" placeholder="Journal">
+                    <input class="input-box" type="text" name="authors" placeholder="Authors">
+                    <textarea class="input-textarea" name="abstract" placeholder="Abstract"></textarea>
+                    <input class="input-file" type="file" id="rerci-file-button" name="file"><br>
+                    <input class="submit-button" type="submit" value="Upload"><br>
+                    <p class="body-text" id="response-serci"></p>
+                </form>
+            </div>
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <h1 class="form-title-text">Add RERCI Article</h1>
+                        <button class="swap-forms-button" onclick="move_overlay_back()"><i class="fas fa-long-arrow-alt-right"></i></button>
+                    </div>
 
-                        <div class="overlay-panel overlay-right">
-                            <h1 class="form-title-text" >Add Congress Article</h1>
-                            <button class="swap-forms-button" onclick="move_overlay()"><i class="fas fa-long-arrow-alt-left"></i></button>
-                        </div>
+                    <div class="overlay-panel overlay-right">
+                        <h1 class="form-title-text" >Add Congress Article</h1>
+                        <button class="swap-forms-button" onclick="move_overlay()"><i class="fas fa-long-arrow-alt-left"></i></button>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="bottom-button-banner">
+            <a class="back-link" href="./index.html"><button class="edit-button"><img class="back-arrow" alt="back arrow" src="http://serci.org/pointer.png"><p class="body-text"> Back</p></button></a>
+            
+            
         </div>
         <script>
             function move_overlay() {

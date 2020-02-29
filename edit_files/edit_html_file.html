@@ -9,8 +9,13 @@
     <body>
         <h1 class="subtitle-text" id="file-title">Loading...</h1>
         <div class="code-section">
-            <div id="line-numbers" class="code-line">1</div>
+            <div id="line-numbers" class="code-line" style="width: calc(35px - 2px * 2);">1</div>
             <div id="code-area" class="code-line" type="text" contenteditable="true"></div>
+        </div>
+        <div class="bottom-button-banner">
+            <a class="back-link" href="./browse_files.html"><button class="edit-button"><img class="back-arrow" alt="back arrow" src="http://serci.org/pointer.png"><p class="body-text"> Back</p></button></a>
+            
+            <button class="edit-button" onclick="push_changes_to_github()"><p class="body-text">Submit Changes</p><img class="submit-tick" alt="submit tick" src="../icons/tick.png"></button>
         </div>
     </body>
     <script src="edit_html_file.js"></script>
