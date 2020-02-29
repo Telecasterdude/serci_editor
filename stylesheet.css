@@ -372,7 +372,28 @@ a {
 }
 
 
-/* File Editor Stuff */
+.file-creation-dropdown {
+    position: absolute;
+    border-radius: 5px;
+    right: calc(100vw * 0.05);
+    bottom: 65px;
+    background-color: aquamarine;
+    overflow: hidden;
+}
+
+.dropdown-option {
+    padding: 10px 2px;
+}
+
+.dropdown-option:hover {
+    background-color: aqua;
+    cursor: pointer;
+}
+
+
+/* **************************************** */
+/* ************** FILE EDITOR ************* */
+/* **************************************** */
 
 #file-title {
     text-overflow: ellipsis;

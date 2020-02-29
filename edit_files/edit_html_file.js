@@ -187,6 +187,5 @@ populate_page();
 
 //TO DO:
 // Add a warning on the back button when you are going back without making changes? This might be complex so maybe leave for later
-// Add a back button from the folder browser so that you can get back to main menu
-// Add a way to create files in the folder browser
+// Add a way to create files in the folder browser <- basically just make the buttons work now
 
