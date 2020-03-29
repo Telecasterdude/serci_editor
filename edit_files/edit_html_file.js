@@ -1,6 +1,6 @@
 const {PythonShell} = require('python-shell');
 
-let edit_state = {current_number_of_lines : 1, filename : "N/A"}; 
+let edit_state = {current_number_of_lines : 1, filename : "N/A", is_new_file : false}; 
 
 function change_line_numbers(numlines_to_add) {
     /* Takes an integer specifying the number of lines to add. If this number 
@@ -87,6 +87,7 @@ function populate_page() {
     
     let url_search_parameters = new URLSearchParams(window.location.search);
     let filename = url_search_parameters.get('filename');
+    edit_state.is_new_file = url_search_parameters.get('is_new_file') !== null; 
     edit_state['filename'] = filename.slice(1);
     
     let options = {
@@ -94,7 +95,11 @@ function populate_page() {
         args : [0, filename]  //0 argument specifies a download
     }
     
-    PythonShell.run('upload_download_file.py', options, (error, output) => {console.log(error); populate_code(filename, output);});
+    if (edit_state.is_new_file) {
+        populate_code(filename + ".txt", ["Type your text here"]);
+    } else {
+        PythonShell.run('upload_download_file.py', options, (error, output) => {console.log(error); populate_code(filename, output);});
+    }
 }
 
 
@@ -105,10 +110,20 @@ function push_changes_to_github() {
      * updates that do not change the file */
     
     let current_text = return_current_document_text();
+    if (!edit_state.is_new_file) {
+        filename = edit_state['filename'];
+        mode = 1;
+        text = "This file was changed from within the EDIT APP";
+        
+    } else {
+        filename = document.querySelector('.subtitle-text').textContent;
+        mode = 3;
+        text = "This file was created from within the EDIT APP";
+    }
     
     let options = {
         scriptPath : './python_scripts/',
-        args : [1, edit_state['filename'], current_text, "This file was changed from within the EDIT APP"]  //1 argument specifies a change to an existing file
+        args : [mode, filename, current_text, text]  //1 argument specifies a change to an existing file
     }
     
     PythonShell.run('upload_download_file.py', options, (error, output) => {console.log(error);if (output === undefined) {alert("An error has occured. File update unsuccessful.");} else {alert(output);}});
@@ -119,7 +134,6 @@ function push_changes_to_github() {
 function populate_code(title_text, line_list) {
     /* Takes a title_text and list containing each line of the file and populates the code 
      * section of the page with the contents of that file */
-    
     let code = document.querySelector('#code-area'); 
     let i;
     for (i = 0; i < line_list.length-1; i++) {
@@ -141,6 +155,9 @@ function populate_code(title_text, line_list) {
     let line_numbers_width = line_numbers.offsetWidth;
     code.style.width = `calc(100% - (${line_numbers_width + 20}px)`; //10px padding on each side of #code-area
     document.querySelector('.subtitle-text').textContent = title_text.slice(1); //change the page title
+    if (edit_state.is_new_file) {
+        document.querySelector('.subtitle-text').contentEditable = true;
+    }
 }
 
 
@@ -181,11 +198,10 @@ document.querySelector('#code-area').addEventListener('paste', (e) => {
     change_line_numbers(number_of_enters);
 });
 
-populate_page();
+populate_page(); 
 
 
 
 //TO DO:
 // Add a warning on the back button when you are going back without making changes? This might be complex so maybe leave for later
 // Add a way to create files in the folder browser <- basically just make the buttons work now
-

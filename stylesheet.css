@@ -77,7 +77,6 @@ body {
 }
 
 .subtitle-text {
-    cursor: default;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
     font-size: 32px;
@@ -86,15 +85,18 @@ body {
     text-align: center;
 }
 
-
-a {
-    text-decoration: none;
-    cursor: default;
+.tutorial-subtitle-text {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 23px;
+    line-height: 38px;
+    margin: 0.8em 0;
+    text-align: left;
 }
 
 
 .body-text {
-    margin: 5px;
+    margin: 5px 0;
     font-size: 17px;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
@@ -318,6 +320,20 @@ a {
     text-overflow: ellipsis;
 }
 
+.file-line {
+    display: flex;
+    justify-content: space-between;
+}
+
+.file-text-container {
+    display: flex;
+    align-items: center;
+}
+
+.file-line .body-text{
+    display: inline;
+}
+
 
 .folder-line, .file-line {
     /*display: flex;
@@ -336,23 +352,20 @@ a {
     cursor: pointer;
 }
 
-.folder-line::before, .file-line::before{
+.folder-line::before {
     display: block;
     content: '';
     width: 30px;
     height: 30px;
     float: left;
     margin-right: 15px;
-}
-
-
-.folder-line::before {
     background-image: url(./icons/148705-essential-collection/svg/folder-11.svg);
 }
 
-.file-line::before {
+
+/*.file-line::before {
     background-image: url(./icons/148705-essential-collection/svg/file-1.svg);
-}
+}*/
 
 .directory-container {
     height: calc(100% - 38px - 0.8 * 2 * 38px - 60px); /* 100% - line-height(subtitle-text) - margin(subtitle-text) * 2 * line-height(subtitle-text)  - some extra padding for the bottom*/ 
@@ -361,6 +374,10 @@ a {
     margin: 0 auto;
     border-radius: 15px;
     background: rgb(191, 223, 251);
+}
+
+.directory-container a {
+    text-decoration: none;
 }
 
 .link-button {
@@ -377,8 +394,9 @@ a {
     border-radius: 5px;
     right: calc(100vw * 0.05);
     bottom: 65px;
-    background-color: aquamarine;
+    background-color: rgb(255, 255, 255);
     overflow: hidden;
+    height: 0;
 }
 
 .dropdown-option {
@@ -386,10 +404,31 @@ a {
 }
 
 .dropdown-option:hover {
-    background-color: aqua;
+    background-color: rgba(238, 238, 238, 1);
     cursor: pointer;
 }
 
+
+.trash-icon {
+    display: inline-block;
+    height: 25px;
+    margin-right: 10px;
+    visibility: hidden;
+    filter: brightness(0.9);
+}
+
+.file-line:hover .trash-icon {
+    visibility: visible;
+}
+
+.trash-icon:hover {
+    filter: brightness(1.1);
+}
+
+.file-icon {
+    height: 25px;
+    margin-right: 15px;
+}
 
 /* **************************************** */
 /* ************** FILE EDITOR ************* */
@@ -481,3 +520,36 @@ a {
     width: 20px;
 }
 
+.bottom-button-banner a {
+    text-decoration: none;
+}
+
+
+/* ******************************************* */
+/* ************** TUTORIAL STUFF ************* */
+/* ******************************************* */
+
+.tutorial-container {
+    padding: 0 5%;
+    width: 90%;
+    height: 80%;
+    overflow: auto;
+}
+
+
+.tutorial-block .tutorial-subtitle-text:first-child {
+    margin-bottom: 0em;
+    
+}
+
+.minor-heading {
+    font-size: 19px;
+    font-weight: bold;
+    margin: 1.0em 0 0.3em 0;
+}
+
+
+.front-arrow {
+    width: 15px;
+    transform: rotate(90deg)
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="./../stylesheet.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+        <title>How to Manage Posts and the Slideshow</title>
+    </head>
+    <body>
+        <h1 class="subtitle-text" id="file-title">How to Manage Posts and the Slideshow</h1>
+        <div class="tutorial-container">
+            <div class="tutorial-block">
+                <p class="tutorial-subtitle-text">Adding posts</p>
+                <p class="body-text">You will notice that there are several posts on the front page (below the slideshow box). Automatically the 4 most recent posts will be featured on the front page. If you want to add a post to announce something, you should do it this way to ensure the post will be on the front page. If you want to keep a post on the front page for a long time you should use the slideshow feature instead.</p>
+                <p class="body-text minor-heading">Post header:</p>
+                <p class="body-text">Posts have a slightly different header as can be seen below.</p>
+                <p class="code-line">
+                    ---<br>
+                    title: 2018 Congress Documents and Journal Articles are Now Available<br>
+                    layout: post<br>
+                    folder_str: ./../../../<br>
+                    picture: ./pictures/RERCI-release-img.png<br>
+                    excerpt_separator: &#60;!--stop--> <br>
+                    ---
+                </p>
+                <p class="body-text">The title section will become the title of the post. The picture section should be a link to a picture on the web server. This picture will be used on the fron page. You should not change any of the other fields.</p>
+                <p class="body-text">The front page also contains an excerpt of the post. All text from the start of the article until the &#60;!--stop--> will be used as the excerpt. Hence you will need to put &#60;!--stop--> after the section of text you want to be excerpt. An example is given below.</p>
+                <p class="code-line">Welcome to the new SERCI website! Take a few minutes to look around and familiarise yourself with the new look. No files, documents or articles should have been removed in the transition from the old website to this one. If you're struggling to find something feel free to email [webmaster@serci.org](mailto:webmaster@serci.org) and we'll help you from there. We've also made a [SERCI twitter account](https://twitter.com/SerciCopyright) so please follow us if you want to stay up to date.<br>
+                {:.body-text}<br>
+                &#60;!--stop--><br><br>
+
+                So what's actually changed on the website?<br>
+                {:.body-text}<br><br>
+
+                Most of the site has stayed...
+                </p>
+                
+                <p class="body-text minor-heading">Post title:</p>
+                <p class="body-text">The filename for posts is very important. The date must be the first thing in the filename followed by the actual filename. You should only use "-" as a seperator. An example of a filename is given below.</p>
+                <p class="code-line">2018-17-10-this-will-be-the-post-filename.md</p>
+                <p class="body-text">Jekyll will read this filename and create an html file called "this-will-be-the-post-filename.html".</p>
+                
+                
+            </div>
+            
+            <div class="tutorial-block">
+                <p class="tutorial-subtitle-text">Changing the slideshow</p>
+                <p class="body-text">You can control the slideshow on the front page by changing the slideshow_data.txt file. Each line of that document reprisents a slide in the slideshow. There should always be exactly 3 slides, hence, <b>there should always be exactly 3 lines in the file</b>. If you insert and extra blank line anywhere in the file (even at the end) this will be interpreted as 4th slide and it will break the slide show.</p>
+                <p class="body-text">Each line has 3 fields, the slide title, a link to the slide picture and link to where users will be taken to when they click on the slide. These 3 fields are seperated by the "~" character. There must always be these 3 fields and they must always be in the order mentioned. An example is shown below. Note that there are no spaces between the fields, only the "~" character.</p>
+                <p class="code-line">
+                    SERCIAC 2019 in Montpellier~./pictures/article_pictures/website_css.jpg~./annual_congress.html
+                </p>
+            </div>
+        </div>
+        <div class="bottom-button-banner">
+            <a class="back-link" href="./../index.html"><button class="edit-button"><img class="back-arrow" alt="back arrow" src="http://serci.org/pointer.png"><p class="body-text"> Back</p></button></a>
+            
+            <a class="back-link" href="./basic_markdown.html"><button class="edit-button"><p class="body-text">Next Tutorial </p><img class="front-arrow" alt="front arrow" src="http://serci.org/pointer.png"></button></a>
+        </div>
+    </body>
+</html>

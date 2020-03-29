@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="./../stylesheet.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+        <title>Basic Markdown Tutorial</title>
+    </head>
+    <body>
+        <h1 class="subtitle-text" id="file-title">Basic Markdown Tutorial</h1>
+        <div class="tutorial-container">
+            <div class="tutorial-block">
+                <p class="tutorial-subtitle-text">What is markdown?</p>
+        
+                <p class="body-text">Markdown is a simplified markup language, you can think of it as a very simple coding language that allows you to tell the computer how you want a text document to be laid out. Other examples of markup languages are HTML and LateX.</p>
+                <br>
+            </div>
+            
+            <div class="tutorial-block">
+                <p class="tutorial-subtitle-text">Basic markdown</p>
+                <p class="body-text">To type text you simply begin typing. Nothing special needs to be done here (atleast for now). Markdown comes in when we need to style the text in some way (e.g. adding links, italics, numbered lists, bold font etc.).</p>
+                <br>
+                
+                <p class="body-text minor-heading">Italics:</p>
+                <p class="body-text">If you wanted the text "this should be in italics" to be in italics, you would type it like this </p>
+                <p class="code-line">_this should be in italics_</p>
+                <p class="body-text">and the output would be</p>
+                <p><i>this should be in italics</i></p>
+                <br>
+                
+                <p class="body-text minor-heading">Bold:</p>
+                <p class="body-text">If you wanted the text "this should be in bold" to be in bold, you would type it like this </p>
+                <p class="code-line">**this should be in bold**</p>
+                <p class="body-text">and the output would be</p>
+                <p><b>this should be in bold</b></p>
+                <br>
+                
+                <p class="body-text minor-heading">Links:</p>
+                <p class="body-text">If you wanted the text "this should be a link to google" to be a link, you would type it like this </p>
+                <p class="code-line">[this should be a link to google](https://www.google.com/)</p>
+                <p class="body-text">and the output would be</p>
+                <p><a href="https://www.google.com/">this should be a link to google</a></p>
+                <br>
+                
+                <p class="body-text minor-heading">Combining:</p>
+                <p class="body-text">You can combine the codes above. For example the following code</p>
+                <p class="code-line">[**very important link**](https://www.google.com/), **_some text in italics and bold_**</p>
+                <p class="code-line">will output this</p>
+                <p><a href="https://www.google.com/"><b>very important link</b></a>, <b><i>some text in italics and bold</i></b></p>
+                <br>
+            </div>
+            
+            <div class="tutorial-block">
+                <p class="tutorial-subtitle-text">Markdown lists</p>
+                <p class="body-text minor-heading">Unordered lists:</p>
+                <p class="body-text">This is the code to get unordered lists. Note specifically that there is a space after the "-"</p>
+                <p class="code-line">- apples<br>- bananas<br>- pears</p>
+                <p class="body-text">The output would be</p>
+                <ul>
+                    <li>item 1</li>
+                    <li>item 2</li>
+                    <li>item 3</li>
+                </ul>
+                <br>
+                
+                <p class="body-text minor-heading">Numbered lists:</p>
+                <p class="body-text">This is the code to get unordered lists. Note specifically that there is a space after the "1." and "2." etc.</p>
+                <p class="code-line">1. apples<br>2. bananas<br>3. pears</p>
+                <p class="body-text">The output would be</p>
+                <ol>
+                    <li>apples</li>
+                    <li>bananas</li>
+                    <li>pears</li>
+                </ol>
+                <br>
+                
+                <p class="body-text minor-heading">Nested lists:</p>
+                <p class="body-text">Sometimes you will want to have nested lists where one list item is also a list. This can be done with the following code.Note the two spaces before the "* strawberry" and "* tomato" etc.</p>
+                <p class="code-line">1. red fruits<br>&nbsp;&nbsp;* strawberry<br>&nbsp;&nbsp;* tomato<br>2. orange fruits<br>&nbsp;&nbsp;* mandarin<br>&nbsp;&nbsp;* oranges</p>
+                <p class="body-text">The output would be</p>
+                <ol>
+                    <li>red fruits
+                        <ul>
+                            <li>strawberry</li>
+                            <li>tomato</li>
+                        </ul>
+                    </li>
+                    <li>orange fruits
+                        <ul>
+                            <li>mandarin</li>
+                            <li>oranges</li>
+                        </ul>
+                    </li>
+                </ol>
+                <br>
+            </div>
+            
+            <div class="tutorial-block">
+                <p class="tutorial-subtitle-text">Markdown headings</p>
+                <p class="body-text">You can use bold for headings if you want, but using markdown headings you gives more flexibility and control.</p>
+                <p class="body-text">The general idea is fairly simple; add hashes (#) before some text to make it a heading. The more hashes you add the smaller the heading will be. Some code examples are given below.</p>
+                <p class="code-line"># Title heading<br>## Subheading<br>### Sub-subheading<br>#### Sub-sub-subheading</p>
+                <p class="body-text">The output would be</p>
+                <h1>Title heading</h1>
+                <h2>Subheading</h2>
+                <h3>Sub-subheading</h3>
+                <h4>Sub-sub-subheading</h4>
+                <br>
+            </div>
+            
+            <div class="tutorial-block">
+                <p class="tutorial-subtitle-text">Final comments</p>
+                <p class="body-text">There's a bit more to standard markdown (tables and quotes) but you're unlikely to use them on the website so I'll skip it in this tutorial. Feel free to google it if you want to learn it though. Once you're reasonably comfortable with everything here, you'll want to loop at the Liquid/Jekyll tutorial. Liquid/Jekyll is what allows us to change the text fonts so that the website looks nice. Don't worry that tutorial is shorter than this one, as we only need to know 1 or 2 things.</p>
+                <br>
+            </div>
+            
+        </div>
+        <div class="bottom-button-banner">
+            <a class="back-link" href="./../index.html"><button class="edit-button"><img class="back-arrow" alt="back arrow" src="http://serci.org/pointer.png"><p class="body-text"> Back</p></button></a>
+            
+            <a class="back-link" href="./liquid_jekyll_tutorial.html"><button class="edit-button"><p class="body-text">Next Tutorial </p><img class="front-arrow" alt="front arrow" src="http://serci.org/pointer.png"></button></a>
+        </div>
+    </body>
+</html>

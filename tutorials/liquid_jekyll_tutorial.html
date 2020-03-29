@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="./../stylesheet.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+        <title>Short Liquid/Jekyll Tutorial</title>
+    </head>
+    <body>
+        <h1 class="subtitle-text" id="file-title">Short Liquid/Jekyll Tutorial</h1>
+        <div class="tutorial-container">
+            <div class="tutorial-block">
+                <p class="tutorial-subtitle-text">Why are we using liquid and jekyll?</p>
+                <p class="body-text">When you upload a file or make a change to a file on the server with this application (the one you are currently using) the change isn't directly pushed to the server. There's a program called jekyll which puts everything into the correct form and then uploads those files to the server.</p>
+                <p class="body-text">It might be easier to understand with an example of this. You'll notice that in your file browser there is no file for about_serci.html instead you'll find an about_rerci.md file. The ".md" extension stands for Markdown. However, on the actual server you'll see that the file is actually <a href="www.serci.org/about_reci.html">serci.org/<strong>about_rerci.html</strong></a>. This is because Jekyll takes the markdown file, reads the markdown and liquid code inside of it, and turns it into an html file for the server.</p>
+                <p class="body-text">Liquid can do a lot of stuff, but we only need to know how to style our text and how to create top banners.</p>
+            </div>
+            
+            <div class="tutorial-block">
+                <p class="tutorial-subtitle-text">Some examples</p>
+                <p class="body-text minor-heading">Serci styles:</p>
+                <p class="body-text">Take a look at this snippet of the first few lines from the old annual_congress.md file</p>
+                <p class="code-line">
+                    ---<br>
+                    title: Annual Congress<br>
+                    layout: default<br>
+                    ---<br><br>
+                    
+                    # SERCIAC 2020<br>
+                    {:.heading-text}<br>
+                    {:style="border-bottom: 1px solid #E11C1A;"}<br><br>
+
+                    We are announcing the 19th SERCI Annual Congress 2020. The Congress wil be held in Boulder, Colorado (USA) on Monday June 29 and Tuesday June 30.<br>
+                    {:.body-text}<br><br>
+
+                    The local organiser is Prof. Kristelia Garcia (University of Colorado Boulder), and the Keynote Speaker of the Conference will be Prof. Keith Maskus (University of Colorado Boulder).<br>
+                    {:.body-text}<br><br>
+                    
+                    # CALL FOR PAPERS<br>
+                    {:.title-text}<br>
+                    {:style="margin-bottom: 0px;"}<br><br>
+
+                    Submissions of papers to be presented at the congress are hereby invited, and should be send as an email attachment to [richard@serci.org](mailto:richard@serci.org), with **submission deadline 5th April 2020**. Successful authors will be notified on or before 19th April. At submission stage, while completed papers are encouraged, a detailed abstract is sufficient. Early submissions are appreciated.<br>
+                    {:.body-text}<br>
+                </p>
+                <p class="body-text">The output of the above code will look like this</p>
+                <img src="tutorial_annual_congress.png" style="width:100%; border-radius: 5px;">
+                
+                <p class="body-text">You should already recognise some of this code from the markdown tutorial, for example: "[richard@serci.org](mailto:richard@serci.org)" and "# CALL FOR PAPERS".</p>
+                <p class="body-text">But you'll notice that there's some new code, for example "{:.body-text}" "{:.title-text}". This is the liquid code we're about the learn about.</p>
+                <p class="body-text">Putting "{:.body-text}" <b>directly after</b> some text styles that text into the serci style. Putting "{:.heading-text}" after a bit of text styles that text into the serci heading style. Should should only be using "{:.heading-text}" on bits of text that are also headings (i.e. using the markdown # to make it a heading). "{:.title-text}" is the equivalent of a subtitle style.</p>
+                <br>
+                <p class="body-text minor-heading">Top banners:</p>
+                <p class="body-text">This is what I refer to as a top banner.</p>
+                <p class="code-line">
+                ---<br>
+                title: Annual Congress<br>
+                layout: default<br>
+                ---<br>
+                </p>
+                <p class="body-text">If this banner is not there, then jekyll will not read the file, so it's very important you include this banner if you create a new file. The most important section is the layout section. RERCI files will have the layout as "rerci", normal SERCI files will have the layout as "default". The title section simply specifies what the title in the browser tab should be. Here is an example of the top banner for the About RERCI file.</p>
+                <p class="code-line">
+                ---<br>
+                title: About RERCI<br>
+                subtitle: ISSN&#58; 1698-1359<br>
+                layout: rerci<br>
+                ---<br>
+                </p>
+                <p class="body-text">In the case of RERCI layouts, the subtitle is displayed on screen. You can see the "ISSN&#58; 1698-1359" text is displayed as a subtitle here.</p>
+                <img src="about_rerci_img.png" style="width:100%; border-radius: 5px;">
+                
+                
+                
+                
+                
+                
+            </div>
+        </div>
+        <div class="bottom-button-banner">
+            <a class="back-link" href="./../index.html"><button class="edit-button"><img class="back-arrow" alt="back arrow" src="http://serci.org/pointer.png"><p class="body-text"> Back</p></button></a>
+            
+            <a class="back-link" href="./managing_website.html"><button class="edit-button"><p class="body-text">Next Tutorial </p><img class="front-arrow" alt="front arrow" src="http://serci.org/pointer.png"></button></a>
+        </div>
+    </body>
+</html>

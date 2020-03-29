@@ -1,3 +1,4 @@
+const {dialog} = require('electron').remote;
 const {PythonShell} = require('python-shell');
 
 let current_folder = "";
@@ -19,6 +20,16 @@ drwxrwxr-x   20 3232     2768         4096 Jun 25 15:20 congress_documents
 drwxrwxr-x    2 3232     2768         4096 Nov 10  2018 editor_pictures
 -rw-rw-r--    1 3232     2768        16220 May 04 07:22 editorial_board.html
 drwxrwxr-x    2 3232     2768         4096 Nov 10  2018 email_data`;*/
+
+
+function open_upload_file_dialog() {
+    /* When clicked allows users to select files and then sends them to the python script for uploading */
+    
+    list_of_selected_files = dialog.showOpenDialog();
+    if (list_of_selected_files !== undefined && list_of_selected_files.length == 1) {
+        upload_file_to_server(list_of_selected_files[0]);
+    }
+}
 
 
 
@@ -72,12 +83,45 @@ async function populate_page(str) {
     /* Takes a directory string to open. Queries the python script to get the contents of the directory, 
        and then prints those contents to the page. */
     
+    let new_file_link = document.querySelector("#new-file-link");
+    new_file_link.setAttribute('href', `./edit_html_file.html?filename=${str}/click_here_to_edit_filename&is_new_file=true`)
+    
     let options = {
         scriptPath : './python_scripts/',
         args : [str]
     }
 
     PythonShell.run('folder_browser.py', options, (error, output) => {console.log(error);print_folder_contents(output, str)});
+}
+
+
+async function upload_file_to_server(filepath_on_pc) {
+    filename = filepath_on_pc.split("/")[filepath_on_pc.split("/").length - 1]
+    filepath_on_server = current_folder.slice(1) !== "" ? current_folder.slice(1) + "/" + filename : filename
+    
+    
+    let options = {
+        scriptPath : './python_scripts/',
+        args : [2, filepath_on_server, filepath_on_pc, "This file was added from within the EDIT APP"]
+    }
+    
+    PythonShell.run('upload_download_file.py', options, (error, output) => {console.log(error);if (output === undefined) {alert("An error has occured. File upload unsuccessful.");} else {alert(output); populate_page(current_folder);}});
+    
+}
+
+function delete_file(e, filename) {
+    filepath = current_folder !== "" ? current_folder + "/" + filename : filename;
+    console.log(filepath);
+    e.preventDefault(); //stop event from bubbling
+    
+    if (confirm(`Are you sure you want to delete ${filename}?`)) {
+        let options = {
+            scriptPath : './python_scripts/',
+            args : [4, filepath, "This file was added from within the EDIT APP"]
+        }
+
+        PythonShell.run('upload_download_file.py', options, (error, output) => {console.log(error);if (output === undefined) {alert("An error has occured. File deletion unsuccessful.");} else {alert(output); populate_page(current_folder);}});
+    }
 }
 
 
@@ -96,7 +140,7 @@ function print_folder_contents (python_output_list, directory_address) {
         let content_type = folder_contents_list[i].type.split(',')[0];
         
         if (content_type === 'file') {
-            inner_html += `<a class="link-button" href="./edit_html_file.html?filename=${current_folder + "/" + folder_contents_list[i].name}"><div class="file-line"><p class="body-text">${folder_contents_list[i].name}</p></div></a>`;
+            inner_html += `<a class="link-button" href="./edit_html_file.html?filename=${current_folder + "/" + folder_contents_list[i].name}"><div class="file-line"><div class="file-text-container"><img src="../icons/148705-essential-collection/svg/file-1.svg" class="file-icon"><p class="body-text">${folder_contents_list[i].name}</p></div><img src="./../icons/trash.png" class="trash-icon" onclick="delete_file(event, '${folder_contents_list[i].name}')"></div></a>`;
             
         } else if (content_type === 'folder') {
             inner_html += `<div class="folder-line" onclick="change_folder('${folder_contents_list[i].name}')"><p class="body-text">${folder_contents_list[i].name}</p></div>`;
@@ -109,5 +153,35 @@ function print_folder_contents (python_output_list, directory_address) {
 }
 
 
+function toggle_file_creation_menu(command) {
+    let dropdown_menu = document.querySelector(".file-creation-dropdown");
+    if (command === "close") {
+        dropdown_menu.style.height = "";
+        
+    } else if (command === "open") {
+        dropdown_menu.style.height = "auto";
+    }
+}
+
+
 //Initial populate
 populate_page(current_folder);
+
+let create_file_button = document.querySelector("#create-file-button");
+let drop_down_menu = document.querySelector(".file-creation-dropdown")
+
+create_file_button.addEventListener("mouseover", function (e) {
+    toggle_file_creation_menu("open");
+});
+
+create_file_button.addEventListener("mouseleave", function (e) {
+    toggle_file_creation_menu("close");
+});
+
+drop_down_menu.addEventListener("mouseover", function (e) {
+    toggle_file_creation_menu("open");
+});
+
+drop_down_menu.addEventListener("mouseleave", function (e) {
+    toggle_file_creation_menu("close");
+});
